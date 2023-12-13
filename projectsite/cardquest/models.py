@@ -24,6 +24,7 @@ class PokemonCard(BaseModel):
         ('Rare', 'Rare'), 
     )
     CARDTYPE_CHOICES = (
+        ('Psychic', 'Psychic'),
         ('Fire', 'Fire'),
         ('Water', 'Water'),
         ('Grass', 'Grass'), 

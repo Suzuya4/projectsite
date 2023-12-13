@@ -7,17 +7,17 @@ from .models import PokemonCard, Trainer, Collection
 
 @admin.register (PokemonCard)
 class PokemonAdmin (admin. ModelAdmin):
-    list_display = ("name", "rarity") 
+    list_display = ("name", "rarity", "hp", "card_type", "attack", "description", "weakness", "card_number", "release_date", "evolution_stage", "abilities", "image_url", "updated_at", "created_at") 
     search_fields = ("name",)
 
 @admin.register (Trainer)
 class PokemonAdmin (admin. ModelAdmin):
-    list_display = ("name", "location") 
+    list_display = ("name", "birthdate", "location", "email", "updated_at", "created_at") 
     search_fields = ("name",)
 
 @admin.register(Collection)
 class PokemonAdmin(admin.ModelAdmin):
-    list_display = ('display_trainer_name', 'display_pokemon_card', 'collection_date')
+    list_display = ('display_trainer_name', 'display_pokemon_card', 'collection_date', "updated_at", "created_at")
     search_fields = ('trainer__name', 'card__name', 'collection_date__icontains')  # Include trainer name, card name, and collection date in search
 
     def display_trainer_name(self, obj):
