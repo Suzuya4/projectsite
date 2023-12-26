@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container mt-5"> <!-- Adjust the margin-top (mt-5) as needed -->
+    <div class="row justify-content-center">
+        <div class="col-md-6"> <!-- Adjust the column size (col-md-6) as needed -->
+            <form role="form" class="card p-3" action="" method="post" novalidate>
+                {% csrf_token %}
+                {% include 'includes/form.html' %}
+                <br />
+                <div class="form-group">
+                    <div class="col-md-12 col-sm-3">
+                        <button type='submit' class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -3,6 +3,10 @@
 
 {% block content %}
 <!--TRAINERS-->
+<div style="display: flex; justify-content: center; align-items: center; height: 20px;">
+  <a href="{% url 'trainer-add' %}" class="btn" style="background-color: #ff0000; color: #fff; padding: 10px 15px; text-decoration: none; border-radius: 5px;">Add New Trainer</a>
+</div>
+
 <section class="trainers-container">
     <table class="styled-table">
       <tbody>
@@ -11,6 +15,7 @@
           <th>Birthdate</th>
           <th>Location</th>
           <th>Email</th>
+          <th>Action</th>
         </tr>
         {% for object in object_list %}
         <tr>
@@ -18,7 +23,11 @@
           <td>{{ object.birthdate }}</td>
           <td>{{ object.location }}</td>
           <td>{{ object.email}} </td>
-        </tr>
+            <td>
+              <a href="trainer_list/{{ object.id }}" >Edit</a> |
+              <a href="trainer_list/{{ object.id }}/delete" >Delete</a>
+              </td>
+          </tr>
         {% empty %}
                 <tr>
                 <td colspan="4" style="text-align: center;">
@@ -28,5 +37,11 @@
         {% endfor %}
       </tbody>
     </table>
+    <div>
+  </section>
+  <section>
+    <div>
+    {% include 'includes/pagination.html' %}
+    </div>
   </section>
 {% endblock %}

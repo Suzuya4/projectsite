@@ -2,6 +2,10 @@
 {% load static %}
 
 {% block content %}
+<div style="display: flex; justify-content: center; align-items: center; height: 20px;">
+  <a href="{% url 'collection-add' %}" class="btn" style="background-color: #ff0000; color: #fff; padding: 10px 15px; text-decoration: none; border-radius: 5px;">Add New Collection</a>
+</div>
+
   <!-- COLLECTIONS -->
   <section class="collection-container">
     <table class="styled-table">
@@ -10,12 +14,17 @@
           <th>Trainer Name</th>
           <th>Pokemon Card</th>
           <th>Collection Date</th>
+          <th>Action</th>
         </tr>
         {% for collection in collections %}
           <tr>
             <td>{{ collection.trainer.name }}</td>
             <td>{{ collection.card.name }}</td>
             <td>{{ collection.collection_date }}</td>
+            <td>
+              <a href="collection_list/{{ collection.id }}" >Edit</a> |
+              <a href="collection_list/{{ collection.id }}/delete" >Delete</a>
+              </td>
           </tr>
         {% empty %}
           <tr>
@@ -26,5 +35,8 @@
         {% endfor %}
       </tbody>
     </table>
-  </section>
+  </section> 
+  <div>
+    {% include 'includes/pagination.html' %}
+  </div> 
 {% endblock %}

@@ -24,7 +24,6 @@ class PokemonCard(BaseModel):
         ('Rare', 'Rare'), 
     )
     CARDTYPE_CHOICES = (
-        ('Psychic', 'Psychic'),
         ('Fire', 'Fire'),
         ('Water', 'Water'),
         ('Grass', 'Grass'), 
@@ -56,10 +55,12 @@ class PokemonCard(BaseModel):
     release_date = models.DateField(null=True, blank=True)
     evolution_stage = models.CharField(max_length=250, null=True, blank=True)
     abilities = models.CharField(max_length=250, null=True, blank=True)
-    image_url = models.URLField(max_length=250, null=True, blank=True)
     
+    
+    def __str__(self):
+            return self.name
 class Collection(BaseModel):
     card = models.ForeignKey(PokemonCard, blank=True, null=True, on_delete=models.CASCADE)
     trainer = models.ForeignKey(Trainer, blank=True, null=True, on_delete=models.CASCADE)
-    collection_date = models.DateField()        
-        
+    collection_date = models.DateField()  
+    

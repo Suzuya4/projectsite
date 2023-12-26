@@ -16,25 +16,24 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-
-urlpatterns = [
-    path('admin/', admin.site.urls),
-]
-
-from django.urls import path
 from cardquest import views
-
-urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('',views.HomePageView.as_view(),name='home'),
-]
-
-from cardquest.views import HomePageView, TrainerList, PokemonCardList ,CollectionList
-
+from cardquest.views import HomePageView, TrainerList, TrainerCreateView, TrainerUpdateView, TrainerDeleteView
+from cardquest.views import PokemonCreateView, PokemonUpdateView, PokemonDeleteView, PokemonCardListView
+from cardquest.views import CollectionCreateView, CollectionDeleteView, CollectionUpdateView,CollectionList
 urlpatterns = [
 path('admin/', admin.site.urls), 
 path('', views.HomePageView.as_view(), name='home'),
-path('trainer_list/', TrainerList.as_view(), name='trainer-list'), 
-path('pokemon-card-list/', PokemonCardList.as_view(), name='pokemon-card-list'),
-path('collections/', CollectionList.as_view(), name='collection-list'),
+path('pokemoncard_list', PokemonCardListView.as_view(), name='pokemoncard-list'),
+path('pokemoncard_list/add', PokemonCreateView.as_view(), name='pokemon-add'),
+path('pokemoncard_list/<pk>/delete',PokemonDeleteView.as_view(), name='pokemon-delete'),
+path('pokemoncard_list/<pk>/', PokemonUpdateView.as_view(), name='pokemon-update'),
+path('trainer_list', TrainerList.as_view(), name='trainer-list'), 
+path('trainer_list/add', TrainerCreateView.as_view(), name='trainer-add'),
+path('trainer_list/<pk>', TrainerUpdateView.as_view(), name='trainer-update'),
+path('trainer_list/<pk>/delete',TrainerDeleteView.as_view(), name='trainer-delete'),
+path('collections', CollectionList.as_view(), name='collection-list'),
+path('collection_list/add', CollectionCreateView.as_view(), name='collection-add'),
+path('collection_list/<pk>', CollectionUpdateView.as_view(), name='collection-update'),
+path('collection_list/<pk>/delete', CollectionDeleteView.as_view(), name='collection-delete'),
+
 ]
